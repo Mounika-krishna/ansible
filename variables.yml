@@ -1,0 +1,14 @@
+---
+- name: working with variables
+  hosts: all
+
+  vars:   
+   - var1: 20
+  vars_files:    
+   - myvar.yml
+
+  tasks:  
+    - name: printing variables
+      command: echo "{{var1}}"  
+    - name:     
+      command: echo "{{place}} and {{myserver}} and {{mygroupname}}"

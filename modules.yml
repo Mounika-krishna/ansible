@@ -1,0 +1,22 @@
+---
+- name: working with playbooks
+  hosts: all[0]
+  tasks:    
+    - name: working with command module
+      command: hostname -i
+
+    - name: working with file module
+      file:  
+        path: /tmp/monu.txt
+        state: touch
+    - name: Copy file with owner and permissions
+      template:
+        src: testingfile2.txt
+        dest: /tmp
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: working with script module
+      script: ./test.py    
+              

@@ -1,0 +1,6 @@
+[test]
+jenkins
+
+[dev]
+ansible_slave1
+
