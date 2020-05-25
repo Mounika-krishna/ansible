@@ -1,0 +1,6 @@
+---
+- name: working with apache roles
+  hosts: jenkins
+  roles:    
+    - apache
+

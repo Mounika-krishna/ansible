@@ -1,0 +1,27 @@
+---
+# tasks file for apache
+- name: collecting public_ip
+  command: curl http://169.254.169.254/latest/meta-data/public-ipv4
+  register: my_ip
+
+- set_fact: mypub_ip="{{my_ip.stdout}}"
+
+- name: installing httpd
+  yum:
+    name: httpd
+    state: present
+  notify: httpd restart
+- name: enabling httpd during system boot up time
+  systemd:
+    enabled: yes
+    name: httpd
+
+- name: Modify httpd.conf
+  replace:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: '^#ServerName www.example.com'
+    replace: 'ServerName {{mypub_ip}}'
+
+- name: copy index.html
+  template: src=index.html dest=/var/www/html/index.html
+
