@@ -1,0 +1,13 @@
+---
+- hosts: all
+
+  tasks:
+
+    # emit a debug message containing the content of each file.
+    - debug:
+        msg: "{{ item }}"
+      with_file:
+        - test.py
+
+    - debug: msg="{{item}}"
+      with_lines: cat test.py      

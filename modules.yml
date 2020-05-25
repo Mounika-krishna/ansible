@@ -1,6 +1,6 @@
 ---
 - name: working with playbooks
-  hosts: all[0]
+  hosts: all
   tasks:    
     - name: working with command module
       command: hostname -i

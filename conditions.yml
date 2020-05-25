@@ -1,0 +1,7 @@
+---
+- name: working with conditions
+  hosts: all
+  tasks:   
+   - name: working with == operator
+     command: uptime
+     when: ansible_distribution_major_version == "2"

@@ -1,0 +1,8 @@
+---
+- name: working with loops
+  hosts: all
+  tasks:
+
+    - name: working with with_items
+      command: hostname -i
+      with_items: [1,2] 

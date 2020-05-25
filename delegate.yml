@@ -1,0 +1,11 @@
+---
+- name: working with delegate_to
+  hosts: all
+  tasks:
+    - name: printing servername
+      command: uname -a
+      delegate_to: jenkins
+
+      register: out
+    - debug:
+        msg: "{{out.stdout}}"      
